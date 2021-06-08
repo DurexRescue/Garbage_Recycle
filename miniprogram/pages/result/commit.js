@@ -25,6 +25,7 @@ Page({
     })
   },
   formSubmit: function(e) {
+    console.log("aaaa")
     var that=this
     var keyword = e.detail.value.keyword
     if (keyword == undefined || keyword == null || keyword == "") {
@@ -37,20 +38,8 @@ Page({
     this.setData({
       isCommiting: true
     })
-    this.onCheckMsg(keyword,function(res){
-      console.log("res====" + JSON.stringify(res))
-      if(res.errCode==0){
-        that.onCommit(keyword)
-      }else{
-        that.setData({
-          isCommiting: false
-        })
-        wx.showToast({
-          title: '涉及敏感词汇',
-          icon:"none"
-        })
-      }
-    })
+    //console.log("res====" + JSON.stringify(res))
+    that.onCommit(keyword)  
   },
   onCommit: function (keyword){
     db.collection('commit').add({
@@ -59,13 +48,14 @@ Page({
       },
       success: res => {
         console.log(res)
-        this.setData({
-          isCommiting: false
-        })
         wx.showToast({
           title: '提交成功',
           icon: "none"
         })
+        this.setData({
+          isCommiting: false
+        })
+        
         wx.switchTab({
           url: '/pages/ai/index',
         })

@@ -19,6 +19,7 @@ exports.main = async(event, context) => {
         },
         json: true
       }).then(data=>{
+        console.log("DR")
         return Promise.resolve({
           code: 0,
           data,

@@ -6,7 +6,7 @@
 </view>
 <view class='ai-view'>
   <text class='txt'>或</text>
-  <image src='/images/paizhao.png' class='ai-paizhao' bindtap='onBindCamera' />
+  <image style="position: relative; left: 0rpx; top: -17rpx"  src='/images/paizhao.png' class='ai-paizhao' bindtap='onBindCamera' />
   <text class='tip'>自动识别</text>
 
 </view>

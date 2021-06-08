@@ -1,0 +1,57 @@
+/* pages/select/test.wxss */
+.container{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.user_image{
+  height: 2000rpx;
+  width:500rpx;
+  margin-top:0rpx;
+}
+.user_text{
+  margin-top: 50rpx;
+  font-size: 32rpx;
+  font-family: MicroSoft Yahei;
+  font-weight: bold;
+}
+.moto{
+  font-size: 22rpx;
+  font-family: MicroSoft Yahei;
+  font-weight: bold;
+  line-height: 80rpx;
+  color: #405f80;
+ 
+}
+
+
+
+.user_moto{
+  margin-top: 50rpx;
+  border: 1px solid #804040;
+  width: 250rpx;
+  height: 80rpx;
+  border-radius: 5px;
+  text-align: center;
+}
+.moto1{
+  font-size: 22rpx;
+  font-family: MicroSoft Yahei;
+  font-weight: bold;
+  line-height: 80rpx;
+  color: #405f80; 
+}
+
+.user_moto1{
+  margin-top: 50rpx;
+  border: 1px solid #804040;
+  width: 180rpx;
+  height: 80rpx;
+  border-radius: 5px;
+  text-align: center;
+}
+
+page{
+  height: 100%;
+  background-color: #b3d4db;
+}

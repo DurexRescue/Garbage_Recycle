@@ -96,7 +96,8 @@ Page({
             filePath: res.tempFilePath,
             encoding: "base64",
             success: res => {
-              that.onCheckImg( res.data)
+              //that.onCheckImg( res.data)
+              that.req(that.data.accessToken, res.data)
             },
             fail: res => {
               wx.hideLoading()
@@ -115,35 +116,34 @@ Page({
     }, 100))
   },
   // 默认图片不能超过1m
-  onCheckImg: function(buffer) {
-    var that = this
-    wx.cloud.callFunction({
-      name: "checkImg",
-      data: {
-        type: 'image/png',
-        buffer: buffer
-      },
-      success: res => {
-        console.log("=onCheckImg=success===" + JSON.stringify(res))
-        if (res.result.errCode == 0) {
-          that.req(that.data.accessToken, buffer)
-        } else if (res.result.errCode == 87014) {
-          wx.hideLoading()
-          wx.showToast({
-            icon: 'none',
-            title: '内容含有违法违规内容',
-          })
-        } else {
-          wx.hideLoading()
-        }
-      },
-      fail: err => {
-        wx.hideLoading()
-        console.log("=onCheckImg=err===" + JSON.stringify(err))
-        // return cb(err)
-      },
-    })
-  },
+//  onCheckImg: function(buffer) {
+//    var that = this
+//    wx.cloud.callFunction({
+//      name: "checkImg",
+//      data: {
+//        type: 'image/png',
+//        buffer: buffer
+//      },
+//      success: res => {
+//        console.log("=onCheckImg=success===" + JSON.stringify(res))
+//        if (res.result.errCode == 0) {
+//          that.req(that.data.accessToken, buffer)
+//        } else if (res.result.errCode == 87014) {
+//          wx.hideLoading()
+//            icon: 'none',
+//            title: '内容含有违法违规内容',
+//          })
+//        } else {
+//          wx.hideLoading()
+//        }
+//      },
+//      fail: err => {
+//        wx.hideLoading()
+//        console.log("=onCheckImg=err===" + JSON.stringify(err))
+//        // return cb(err)
+//      },
+//    })
+//  },
   req: function(token, image) {
     var that = this
     http.req("https://aip.baidubce.com/rest/2.0/image-classify/v2/advanced_general?access_token=" + token, {
