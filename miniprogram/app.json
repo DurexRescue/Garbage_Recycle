@@ -74,8 +74,8 @@
         "selectedIconPath": "images/tabBar/home.fill.png"
       },
       {
-        "text": "购物车",
-        "pagePath": "pages/shoppingCart-user/shoppingCart",
+        "text": "发布",
+        "pagePath": "pages/post-user/post",
         "iconPath": "images/tabBar/shoppingCart.png",
         "selectedIconPath": "images/tabBar/shoppingCart.fill.png"
       },

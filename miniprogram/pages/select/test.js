@@ -8,7 +8,7 @@ wx.switchTab({
 },
 
 OnTap1:function(){
-  wx.navigateTo({
+  wx.redirectTo({
     url: '../shouye/shouye',
   })
   }

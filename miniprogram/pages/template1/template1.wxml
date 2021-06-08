@@ -3,7 +3,7 @@
     <block wx:for="{{tabBar}}" wx:for-item="item" wx:key="tabBar">
         <view class="tabBar-item">
             <navigator open-type="reLaunch" url="{{item.pagePath}}">
-                <view><image class="icon" src='{{item.iconPath}}'></image></view>
+                <view><image class="tabBar-icon" src='{{item.iconPath}}'></image></view>
                 <view class="{{item.current== 1 ? 'tabBartext' :''}}">{{item.text}}</view>
             </navigator>
         </view>

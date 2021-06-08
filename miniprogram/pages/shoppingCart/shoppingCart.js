@@ -6,8 +6,7 @@ var template = require('../template1/template1.js');
 
 Page({
   onLoad: function () {
-    template.tabbar("tabBar", 0, this)//0表示第一个tabbar
-    this.getData();
+    template.tabbar("tabBar", 1, this)//0表示第一个tabbar
   },
   /**
    * 页面的初始数据
@@ -554,7 +553,7 @@ getBookCartList(){
   },
 
   onLoad: function () {
-    template.tabbar("tabBar", 0, this)//0表示第一个tabbar
- //   this.getData();
+    template.tabbar("tabBar", 1, this)//0表示第一个tabbar
+
   },
 })
