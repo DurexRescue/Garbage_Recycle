@@ -3,15 +3,11 @@
 <view class="container">
   <image class="user_image" src="/images/shouye/1.png"></image>
   <text class="user_text">校园废品回收系统</text>
-  <!--
   <view class="user_moto" bindtap="OnTap"> 
-    <text class="moto">用户端</text>
-  </view>
+  
+  <text class="moto">用户端</text>
+</view>
   <view class="user_moto1" bindtap="OnTap1">
-    <text class="moto1">商家端</text>
-  </view>
-  -->
-  <view class="user_moto" bindtap="OnTap"> 
-    <text class="moto">使用微信账户授权登录</text>
+  <text class="moto1">商家端</text>
   </view>
 </view>

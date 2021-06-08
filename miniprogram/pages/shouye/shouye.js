@@ -8,7 +8,15 @@ var wxMarkerData = [];
 //系统此时的时间-小时
 var timestamp = Date.parse(new Date());
 var hover = new Date(timestamp).getHours();
+
+var template = require('../template1/template1.js');
+
 Page({
+
+  onLoad: function () {
+    template.tabbar("tabBar", 0, this)//0表示第一个tabbar
+    this.getData();
+  },
 
   /**
    * 页面的初始数据
@@ -348,6 +356,11 @@ Page({
     wx.navigateTo({
       url: '../thing-detail/thing-detail?id=' + id,
     })
-  }
+  },
+
+  onLoad: function () {
+    template.tabbar("tabBar", 0, this)//0表示第一个tabbar
+   // this.getData();
+  },
 })
 

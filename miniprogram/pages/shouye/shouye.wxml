@@ -1,4 +1,8 @@
 <!--pages/shouye/shouye.wxml-->
+<import src="../template1/template1.wxml"/>
+<template is="tabBar" data="{{tabBar:bindData.tabBar}}"/>
+
+
 <import src="../components/news/news.wxml"></import>
 <import src="../components/weatherLocationTrand/weatherLocationTrand.wxml"></import>
 <import src="../components/recommend/recommend.wxml"></import>

@@ -1,8 +1,14 @@
 // pages/shoppingCart/shoppingCart.js
 var app = getApp();
 const orginalPrice = 0; //由于0.00在赋值时是0，用toFixed()取余
-Page({
 
+var template = require('../template1/template1.js');
+
+Page({
+  onLoad: function () {
+    template.tabbar("tabBar", 0, this)//0表示第一个tabbar
+    this.getData();
+  },
   /**
    * 页面的初始数据
    */
@@ -545,5 +551,10 @@ getBookCartList(){
       })
     }
 
-  }
+  },
+
+  onLoad: function () {
+    template.tabbar("tabBar", 0, this)//0表示第一个tabbar
+ //   this.getData();
+  },
 })

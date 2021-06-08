@@ -1,7 +1,14 @@
 // pages/movie-more/movie-more.js
 var app = getApp();
-Page({
 
+var template = require('../template1/template1.js');
+
+
+Page({
+  onLoad: function () {
+    template.tabbar("tabBar", 0, this)//0表示第一个tabbar
+    this.getData();
+  },
   /**
    * 页面的初始数据
    */
@@ -225,5 +232,10 @@ Page({
     this.getMovieListData(typeId);
   },
 
+
+  onLoad: function () {
+    template.tabbar("tabBar", 0, this)//0表示第一个tabbar
+  //  this.getData();
+  },
 
 })

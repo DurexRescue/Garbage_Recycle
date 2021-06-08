@@ -1,4 +1,7 @@
 <!--pages/order/order.wxml-->
+<import src="../template1/template1.wxml"/>
+<template is="tabBar" data="{{tabBar:bindData.tabBar}}"/>
+
 <import src="../order-list/order-list.wxml"></import>
 <view class='containter'>
   <view class='session-tab'>

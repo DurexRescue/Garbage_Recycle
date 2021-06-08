@@ -1,5 +1,5 @@
 {
-  "entryPagePath": "pages/shouye/shouye",
+  "entryPagePath": "pages/select/test",
   "pages": [
     "pages/ai/index",
     "pages/ai/camera/camera",
@@ -12,6 +12,13 @@
     "pages/result/list",
     "pages/result/commit",
     
+
+    "pages/shouye-user/shouye",
+    "pages/shoppingCart-user/shoppingCart",
+    "pages/my-user/my",
+    "pages/post-user/post",
+    "pages/order-user/order",
+
     "pages/select/test",
     "pages/shouye/shouye",
     "pages/shoppingCart/shoppingCart",
@@ -62,31 +69,26 @@
     "list": [
       {
         "text": "首页",
-        "pagePath": "pages/shouye/shouye",
+        "pagePath": "pages/shouye-user/shouye",
         "iconPath": "images/tabBar/home.png",
         "selectedIconPath": "images/tabBar/home.fill.png"
       },
       {
         "text": "购物车",
-        "pagePath": "pages/shoppingCart/shoppingCart",
+        "pagePath": "pages/shoppingCart-user/shoppingCart",
         "iconPath": "images/tabBar/shoppingCart.png",
         "selectedIconPath": "images/tabBar/shoppingCart.fill.png"
       },
-      {
-        "text": "发布",
-        "pagePath": "pages/post/post",
-        "iconPath": "images/tabBar/release.png",
-        "selectedIconPath": "images/tabBar/release.png"
-      },
+
       {
         "text": "订单",
-        "pagePath": "pages/order/order",
+        "pagePath": "pages/order-user/order",
         "iconPath": "images/tabBar/order.png",
         "selectedIconPath": "images/tabBar/order.fill.png"
       },
       {
         "text": "我的",
-        "pagePath": "pages/my/my",
+        "pagePath": "pages/my-user/my",
         "iconPath": "images/tabBar/mine.png",
         "selectedIconPath": "images/tabBar/mine.fill.png"
       }
