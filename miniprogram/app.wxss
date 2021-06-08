@@ -1,7 +1,7 @@
 @import "colorui/main.wxss";
 @import "colorui/icon.wxss";
 @import "./style/weui.wxss";
-//test123
+
 .container {
   height: 100%;
   display: flex;
@@ -11,12 +11,7 @@
   padding: 200rpx 0;
   box-sizing: border-box;
 } 
-<<<<<<< Updated upstream
 
-/*Test1*/
-=======
-/*test2*/
->>>>>>> Stashed changes
 
 button {
   background: initial;
