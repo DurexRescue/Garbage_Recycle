@@ -10,7 +10,8 @@ Page({
     isCamera: true,
     btnTxt: "拍照",
     cWidth: 0,
-    cHeight: 0
+    cHeight: 0,
+    pic_Location: "",
   },
   onLoad() {
     this.ctx = wx.createCameraContext()
@@ -91,7 +92,9 @@ Page({
         destHeight: canvasHeight,
         success: function(res) {
           console.log(res.tempFilePath) //最终图片路径
-
+          that.setData({
+            pic_Location: res.tempFilePath
+          })
           wx.getFileSystemManager().readFile({
             filePath: res.tempFilePath,
             encoding: "base64",
@@ -107,6 +110,7 @@ Page({
               })
             }
           })
+          
         },
         fail: function(res) {
           wx.hideLoading()
@@ -200,9 +204,23 @@ Page({
     console.log(e)
     console.log(e.detail)
     console.log(e.detail.value)
+    /*
     wx.navigateTo({
-      url: '/pages/result/list?keyword=' + e.detail.value,
+      //url: '/pages/result/list?keyword=' + e.detail.value,
+      url: '/pages/post/list?keyword=' + e.detail.value,
     })
+    */
+    var pages = getCurrentPages();
+    var currPage = pages[pages.length - 1];   //当前页面
+    var prevPage = pages[pages.length - 2];  //上一个页面
+ 
+    //直接调用上一个页面的setData()方法，把数据存到上一个页面中去
+    prevPage.setData({
+      //cityName: cityName
+      thingName: e.detail.value,
+      thingImage: this.data.pic_Location,
+    })
+    wx.navigateBack();
   },
   hideModal: function() {
     this.setData({

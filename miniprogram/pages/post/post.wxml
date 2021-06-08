@@ -20,7 +20,7 @@
   <view class="weui-panel">
     <view class="title">
       <view class="title_image" bindtap='bindBookImageInput'>
-        <image src="{{bookImg}}" mode="aspectFit" />
+        <image style="position: relative; left: 0rpx; top: -3rpx"  src="{{bookImg}}" mode="aspectFit" />
       </view>
 
       <view class="title_right">

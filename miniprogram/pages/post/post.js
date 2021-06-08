@@ -206,6 +206,9 @@ Page({
   //
   bindThingImageInput: function() { //商品图片选择
     var that = this;
+    var thingImage;
+    var thingName;
+    /*
     wx.chooseImage({
       count: 1,
       sourceType: ['album', 'camera'],
@@ -215,6 +218,14 @@ Page({
           thingImage: thingImage
         })
       },
+    })
+    */
+    wx.navigateTo({
+      url: '../ai/camera/camera',
+    })
+    that.setData({
+      thingImage: thingImage,
+      thingName: thingName,
     })
   },
   bindThingNameInput: function(e) { //商品名字
