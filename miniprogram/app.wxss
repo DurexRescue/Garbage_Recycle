@@ -11,8 +11,12 @@
   padding: 200rpx 0;
   box-sizing: border-box;
 } 
+<<<<<<< Updated upstream
 
 /*Test1*/
+=======
+/*test2*/
+>>>>>>> Stashed changes
 
 button {
   background: initial;
