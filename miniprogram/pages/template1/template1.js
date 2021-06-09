@@ -29,7 +29,15 @@ function tabbarinit() {
       "pagePath": "../../pages/my/my",
       "iconPath": "../../images/tabBar/mine.png",
       "selectedIconPath": "../../images/tabBar/mine.fill.png"
+    },
+    
+    {
+      "text": "查询",
+      "pagePath": "../sort/sort",
+      "iconPath": "images/tabBar/shou.png",
+      "selectedIconPath": "images/tabBar/shou.png"
     }
+
   ]
 
 }

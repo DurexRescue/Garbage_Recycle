@@ -1,5 +1,5 @@
 {
-  "entryPagePath": "pages/select/test",
+  "entryPagePath":      "pages/select/test",
   "pages": [
     "pages/ai/index",
     "pages/ai/camera/camera",
@@ -96,7 +96,16 @@
         "pagePath": "pages/my-user/my",
         "iconPath": "images/tabBar/mine.png",
         "selectedIconPath": "images/tabBar/mine.fill.png"
+      },
+
+      {
+        "text": "查询",
+        "pagePath": "pages/sort/sort",
+        "iconPath": "images/tabBar/shou.png",
+        "selectedIconPath": "images/tabBar/shou.png"
       }
+
+
     ]
   },
   "sitemapLocation": "sitemap.json",

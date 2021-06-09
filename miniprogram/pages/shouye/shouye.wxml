@@ -32,40 +32,12 @@
   </block>
 </swiper>
 <!-- 搜索框 -->
-<view class='sousuo' bindtap='bindSearchBook' >
-  <image src='/images/shouye/sousuo.png'></image>
+<view class='sousuo' bindtap='bindSearchBook'  style="width: 750rpx; height: 108rpx; display: block; box-sizing: border-box; left: NaNrpx; top: NaNrpx">
+  
 </view>
 <!-- 通知栏的模板 -->
 <view class='templateNews'>
   <template is="theNews" data="{{msgList}}"></template>
-</view>
-<!-- 分类 -->
-<view class='fenlei'>
-  <navigator url='../classify/thing-search/thing-search' class='navi navi-zahuopu'>
-    <view class='leibie fenlei-zahuopu'>
-      <image src='../../images/fenlei/zahuopu.png'></image>
-      <view>校园百货</view>
-    </view>
-  </navigator>
-  <navigator url='../classify/job/job' class='navi navi-jianzhi'>
-    <view class='leibie fenlei-jianzhi'>
-      <image src='../../images/fenlei/jianzhi.png'></image>
-      <view>学生兼职</view>
-    </view>
-  </navigator>
-  <navigator url='../classify/sale/sale' class='navi navi-jishou'>
-    <view class='leibie fenlei-jishou'>
-      <image src='../../images/fenlei/jishou.png'></image>
-      <view>低价急售</view>
-    </view>
-  </navigator>
-  <navigator url='../classify/welfare/welfare' class='navi navi-gongyi'>
-    <view class='leibie fenlei-gongyi'>
-      <image src='../../images/fenlei/gongyi.png'></image>
-      <view>爱心公益</view>
-    </view>
-  </navigator>
-
 </view>
 
 

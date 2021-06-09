@@ -119,12 +119,12 @@ Page({
     this.setData({
       msgList: [
         {
-          url: "url", title: "校园头条：湖科星火支教团队再出发，23名志愿者奔赴甘肃乡村！"
+          url: "url", title: "校园头条：我校在中国大学生羽毛球锦标赛中获2金1银1铜"
         },
         {
-          url: "url", title: "校园头条：2018年湖北省普通高校专升本湖北科技学院查分通知"
+          url: "url", title: "校园头条：273名毕业生受聘为2021届校友大使"
         },
-        { url: "url", title: "校园头条：我校成立首支无偿献血宣传志愿者服务队" }]
+        { url: "url", title: "校园头条：我校举办2021年全国《古生物学与地史学》教学研修班" }]
     });
     //获取实时时间天气数据
     BMap.weather({
@@ -353,6 +353,53 @@ Page({
     wx.navigateTo({
       url: '../thing-detail/thing-detail?id=' + id,
     })
+  },
+
+//ai-index
+
+
+
+onLoad: function(options) {
+  console.log("AAAAAAAAA")
+  var myDate = new Date();
+  var isShowed=wx.getStorageSync("tip")
+  if(isShowed!=1){
+    setTimeout(() => {
+      this.setData({
+        SHOW_TOP: false
+      })
+      wx.setStorageSync("tip", 1)
+    }, 2 * 1000)
+  }else{
+    this.setData({
+      SHOW_TOP: false
+    })
   }
+},
+
+goSearch: function() {
+  wx.navigateTo({
+    url: '../ai/search',
+  })
+},
+onBindCamera: function() {
+  wx.navigateTo({
+    url: '../ai/camera/camera',
+  })
+},
+onAikefu: function() {
+  wx.navigateTo({
+    url: '../android/qa',
+  })
+},
+onShareAppMessage: function() {
+  return {
+    title: "智能分类垃圾",
+    imageUrl: "https://6c61-laji-bopv4-1259505195.tcb.qcloud.la/laji.png?sign=7c8d38e435eb3104fcf5933ebff667f5&t=1561904613",
+    path: "../ai/index"
+  }
+}
+
+
 })
 
