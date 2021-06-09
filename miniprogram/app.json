@@ -1,6 +1,8 @@
 {
   "entryPagePath":      "pages/select/test",
   "pages": [
+    "pages/select/test",
+
     "pages/ai/index",
     "pages/ai/camera/camera",
     "pages/ai/search",
@@ -19,7 +21,7 @@
     "pages/post-user/post",
     "pages/order-user/order",
 
-    "pages/select/test",
+    
     "pages/shouye/shouye",
     "pages/shoppingCart/shoppingCart",
     "pages/my/my",

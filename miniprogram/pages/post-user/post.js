@@ -14,8 +14,8 @@ Page({
    */
   data: {
     //导航栏的数据
-    postBook: true,
-    postThing: false,
+    postBook: false,
+    postThing: true,
     postJob: false,
 
     //发布书本的data值
@@ -46,11 +46,13 @@ Page({
     thingConditions: ["全新", "几乎全新", "九成新", "八成新", "七成新", "六成新", "五成新", "五成新以下"],
     thingConditionIndex: 0,
     thingPrice: '',
-    thingCampus: ["温泉校区", "咸安校区"],
+    thingCampus: ["未来城校区", "南望山校区"],
     thingCampusIndex: 0,
     thingPhoneNumber: '',
+    thingAddress: '',
     thingDescribe: '',
     buttonLoadingThing: false,
+    
 
     //兼职信息数据
     jobName: '',
@@ -252,6 +254,24 @@ Page({
     this.setData({
       thingPhoneNumber: e.detail.value
     })
+  },
+  bindThingAddressSelect:function() {
+    var that = this;
+    //var thingAddress;
+    wx.chooseLocation({
+      success: function (res) {
+        that.setData({
+          osscation_address: res.address,//详细地址
+          thingAddress: res.name,
+          addressName: res.name,//位置名称
+          latAndLong: [{ 'latitude': res.latitude, 'longitude': res.longitude }]//经纬度
+        })
+        that.setData({
+          thingAddress: osscation_address,
+        })
+      }
+    })
+    
   },
   bindThingDescribeInput: function(e) { //商品描述
     this.setData({
