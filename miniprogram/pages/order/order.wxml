@@ -1,3 +1,7 @@
+
+<import src="../template1/template1.wxml"/>
+<template is="tabBar" data="{{tabBar:bindData.tabBar}}"/>
+
 <view class="swiper-tab">
   <view wx:for="{{navTab}}" wx:key="{{index}}" class="swiper-tab-list {{currentTab==index ? 'on_pdd' : ''}}" data-current="{{index}}" bindtap="switchNav">{{item}}</view>
 </view>

@@ -1,4 +1,13 @@
+
+var template = require('../template1/template1.js');
+
 Page({
+
+  onLoad: function () {
+    template.tabbar("tabBar", 2, this)//0表示第一个tabbar
+    this.getData();
+  },
+
   data: {
     nodataType: 7,
     orderList: [],    //订单列表数据，接口获取
@@ -89,4 +98,11 @@ Page({
       this.initData(++this.data.currentPage);
     }
   },
+
+  onLoad: function () {
+    template.tabbar("tabBar", 2, this)//0表示第一个tabbar
+  //  this.getData();
+  },
+
+
 })
