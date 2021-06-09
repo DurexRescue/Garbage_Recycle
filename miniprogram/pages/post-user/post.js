@@ -1,6 +1,7 @@
 // post.js
 var Bmob = require('../../utils/bmob.js');
 var util = require('../../utils/util.js')
+const db = wx.cloud.database()
 var app = getApp()
 
 var template = require('../template1/template1.js');
@@ -261,15 +262,15 @@ Page({
     wx.chooseLocation({
       success: function (res) {
         that.setData({
-          osscation_address: res.address,//详细地址
+          //osscation_address: res.address,//详细地址
           thingAddress: res.name,
-          addressName: res.name,//位置名称
-          latAndLong: [{ 'latitude': res.latitude, 'longitude': res.longitude }]//经纬度
+          //addressName: res.name,//位置名称
+          //latAndLong: [{ 'latitude': res.latitude, 'longitude': res.longitude }]//经纬度
         })
-        that.setData({
-          thingAddress: osscation_address,
-        })
+        console.log(res.name);
+        console.log(that.thingAddress);
       }
+
     })
     
   },
@@ -471,114 +472,135 @@ Page({
   },
   //发布物品的响应事件
   bindSubmitThing: function() {
-    var that = this;
-    var studentId = that.data.studentId;
-    if (!studentId) {
-      wx.showModal({
-        title: '提示',
-        content: '请验证您的学生身份',
-        success: function(res) {
-          if (res.confirm) {
-            console.log('用户点击确定')
-            wx.navigateTo({
-              url: '../my/mySetting/mySetting',
-            })
-          } else if (res.cancel) {
-            console.log('用户点击取消')
-          }
-        }
-      })
-    } else {
-      this.setData({
-        buttonLoadingThing: true
-      })
-      var thingImage = that.data.thingImage; //图片
-      var thingName = that.data.thingName; //名字
-      var thingConditionIndex = that.data.thingConditionIndex; //成色索引值
-      var thingConditions = that.data.thingConditions[thingConditionIndex]; //成色
-      var thingCampusIndex = that.data.thingCampusIndex; //校区索引值
-      var thingCampus = that.data.thingCampus[thingCampusIndex]; //校区
-      var thingDescribe = that.data.thingDescribe || '无备注或描述'; //备注
-      var thingPhoneNumber = that.data.thingPhoneNumber; //电话
-      var thingPrice = that.data.thingPrice; //价格
-      var studentId = that.data.studentId;
-      var nickName = that.data.nickName;
-      var url = app.globalData.huanbaoBase + 'thingpost.php';
-      var urlImg = app.globalData.huanbaoBase + 'thingimg.php';
-      wx.request({
-        url,
-        data: {
-          thingImage: thingImage,
-          thingName: thingName,
-          thingConditions: thingConditions,
-          thingCampus: thingCampus,
-          thingDescribe: thingDescribe,
-          thingPhoneNumber: thingPhoneNumber,
-          thingPrice: thingPrice,
-          studentId: studentId,
-          nickName: nickName,
-        },
-        method: "POST",
-        header: {
-          'content-type': 'application/x-www-form-urlencoded'
-        },
-        success: function(res) {
-          console.log(res);
-          var currenttime = util.formatTime(new Date());
-          var currentdate = util.formatDate(new Date());
-          var thingId = res.data;
-          const uploadTask = wx.uploadFile({
-            url: urlImg,
-            filePath: thingImage[0],
-            name: 'file',
-            formData: {
-              'date': currentdate,
-              'datetime': currenttime,
-              'thingId': thingId,
-            },
-            success: function(res) {
-              console.log(res.data);
-              wx.showToast({
-                title: '发布成功',
-                icon: 'succes',
-                duration: 2500,
-                mask: true
-              })
-              that.setData({
-                buttonLoadingThing: false,
-                thingImage: '',
-                thingName: '',
-                thingDescribe: '',
-                thingPrice: '',
-                thingPhoneNumber: '',//电话号码
-              })
-            },
-            fail: function(res) {
-              console.log(JSON.stringify(res));
-              wx.showToast({
-                title: '发布失败',
-                icon: 'loading',
-                duration: 2000
-              })
-              that.setData({
-                buttonLoadingThing: false
-              })
-            },
-          })
-        },
-        fail: function(res) {
-          console.log(JSON.stringify(res));
-          wx.showToast({
-            title: '发布失败',
-            icon: 'loading',
-            duration: 2000
-          })
-          that.setData({
-            buttonLoadingThing: false
-          })
-        },
-      })
-    }
+    db.collection('order_user').add({
+      data:{
+        thingImage: this.data.thingImage,
+        thingName: this.data.thingName,
+        thingConditions: this.data.thingConditions,
+        thingConditionIndex: this.data.thingConditionIndex,
+        thingPrice: this.data.thingPrice,
+        thingCampus: this.data.thingCampus,
+        thingCampusIndex: this.data.thingCampusIndex,
+        thingPhoneNumber: this.data.thingPhoneNumber,
+        thingAddress: this.data.thingAddress,
+        thingDescribe: this.data.thingDescribe,
+      },
+      success: res => {
+        console.log(res)
+        wx.showToast({
+          titl: '发布成功',
+          icon: "none"
+        })
+      }
+    })
+    // var that = this;
+    // var studentId = that.data.studentId;
+    // if (!studentId) {
+    //   wx.showModal({
+    //     title: '提示',
+    //     content: '请验证您的学生身份',
+    //     success: function(res) {
+    //       if (res.confirm) {
+    //         console.log('用户点击确定')
+    //         wx.navigateTo({
+    //           url: '../my/mySetting/mySetting',
+    //         })
+    //       } else if (res.cancel) {
+    //         console.log('用户点击取消')
+    //       }
+    //     }
+    //   })
+    // } else {
+    //   this.setData({
+    //     buttonLoadingThing: true
+    //   })
+    //   var thingImage = that.data.thingImage; //图片
+    //   var thingName = that.data.thingName; //名字
+    //   var thingConditionIndex = that.data.thingConditionIndex; //成色索引值
+    //   var thingConditions = that.data.thingConditions[thingConditionIndex]; //成色
+    //   var thingCampusIndex = that.data.thingCampusIndex; //校区索引值
+    //   var thingCampus = that.data.thingCampus[thingCampusIndex]; //校区
+    //   var thingDescribe = that.data.thingDescribe || '无备注或描述'; //备注
+    //   var thingPhoneNumber = that.data.thingPhoneNumber; //电话
+    //   var thingPrice = that.data.thingPrice; //价格
+    //   var studentId = that.data.studentId;
+    //   var nickName = that.data.nickName;
+    //   var url = app.globalData.huanbaoBase + 'thingpost.php';
+    //   var urlImg = app.globalData.huanbaoBase + 'thingimg.php';
+    //   wx.request({
+    //     url,
+    //     data: {
+    //       thingImage: thingImage,
+    //       thingName: thingName,
+    //       thingConditions: thingConditions,
+    //       thingCampus: thingCampus,
+    //       thingDescribe: thingDescribe,
+    //       thingPhoneNumber: thingPhoneNumber,
+    //       thingPrice: thingPrice,
+    //       studentId: studentId,
+    //       nickName: nickName,
+    //     },
+    //     method: "POST",
+    //     header: {
+    //       'content-type': 'application/x-www-form-urlencoded'
+    //     },
+    //     success: function(res) {
+    //       console.log(res);
+    //       var currenttime = util.formatTime(new Date());
+    //       var currentdate = util.formatDate(new Date());
+    //       var thingId = res.data;
+    //       const uploadTask = wx.uploadFile({
+    //         url: urlImg,
+    //         filePath: thingImage[0],
+    //         name: 'file',
+    //         formData: {
+    //           'date': currentdate,
+    //           'datetime': currenttime,
+    //           'thingId': thingId,
+    //         },
+    //         success: function(res) {
+    //           console.log(res.data);
+    //           wx.showToast({
+    //             title: '发布成功',
+    //             icon: 'succes',
+    //             duration: 2500,
+    //             mask: true
+    //           })
+    //           that.setData({
+    //             buttonLoadingThing: false,
+    //             thingImage: '',
+    //             thingName: '',
+    //             thingDescribe: '',
+    //             thingPrice: '',
+    //             thingPhoneNumber: '',//电话号码
+    //           })
+    //         },
+    //         fail: function(res) {
+    //           console.log(JSON.stringify(res));
+    //           wx.showToast({
+    //             title: '发布失败',
+    //             icon: 'loading',
+    //             duration: 2000
+    //           })
+    //           that.setData({
+    //             buttonLoadingThing: false
+    //           })
+    //         },
+    //       })
+    //     },
+    //     fail: function(res) {
+    //       console.log(JSON.stringify(res));
+    //       wx.showToast({
+    //         title: '发布失败',
+    //         icon: 'loading',
+    //         duration: 2000
+    //       })
+    //       that.setData({
+    //         buttonLoadingThing: false
+    //       })
+    //     },
+    //   })
+    // }
   },
 
 
