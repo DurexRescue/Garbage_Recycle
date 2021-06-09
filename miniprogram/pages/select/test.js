@@ -1,4 +1,5 @@
 var app = getApp()
+const db = wx.cloud.database()
 
 Page({
   onLoad: function(){
@@ -26,6 +27,37 @@ Page({
             isShowUserName: true,
             userInfo: user,
           })
+
+          //上传用户信息至云数据库
+          // db.collection('user_info').add({
+          //   data:{
+          //     signature: res.signature,
+          //     userInfo: res.userInfo,
+
+          //   }
+          // })
+
+
+          db.collection('user_info').where({
+            userInfo:{
+              nickName: this.data.userInfo.nickName
+            }
+          }).get({
+            success: function(res){
+              console.log(res)
+              console.log(res.data.length == 0)
+              if(res.data.length == 0){
+                console.log("En")
+                db.collection('user_info').add({
+                  data:{
+                    signature: res_.signature,
+                    userInfo: res_.userInfo,
+                  }
+                })
+              }
+            },
+          })
+
         },
         fail: res => {
           console.log("获取用户信息失败", res)
