@@ -484,6 +484,7 @@ Page({
         thingPhoneNumber: this.data.thingPhoneNumber,
         thingAddress: this.data.thingAddress,
         thingDescribe: this.data.thingDescribe,
+        userName: app.globalData.userInfo.nickName,
       },
       success: res => {
         console.log(res)

@@ -1,7 +1,7 @@
 {
   "entryPagePath":      "pages/select/test",
   "pages": [
-    "pages/select/test",
+
 
     "pages/ai/index",
     "pages/ai/camera/camera",
@@ -18,12 +18,7 @@
     "pages/my-user/my",
     "pages/post-user/post",
     "pages/order-user/order",
-<<<<<<< Updated upstream
-
-    
-=======
     "pages/select/test",
->>>>>>> Stashed changes
     "pages/shouye/shouye",
     "pages/shoppingCart/shoppingCart",
     "pages/my/my",
