@@ -2,7 +2,13 @@
 var Bmob = require('../../utils/bmob.js');
 var util = require('../../utils/util.js')
 var app = getApp()
+
+var template = require('../template1/template1.js');
+
 Page({
+  onLoad: function () {
+    template.tabbar("tabBar", 2, this)//0表示第一个tabbar
+  },
   /**
    * 页面的初始数据
    */
@@ -61,7 +67,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function() {
-
+    console.log(res.data)
     
   },
 
@@ -199,6 +205,9 @@ Page({
   //
   bindThingImageInput: function() { //商品图片选择
     var that = this;
+    var thingImage;
+    var thingName;
+    /*
     wx.chooseImage({
       count: 1,
       sourceType: ['album', 'camera'],
@@ -208,6 +217,14 @@ Page({
           thingImage: thingImage
         })
       },
+    })
+    */
+    wx.navigateTo({
+      url: '../ai/camera/camera',
+    })
+    that.setData({
+      thingImage: thingImage,
+      thingName: thingName,
     })
   },
   bindThingNameInput: function(e) { //商品名字
@@ -311,7 +328,8 @@ Page({
   },
   bindSubmitBook: function() {
     var that = this;
-    var studentId = that.data.studentId;
+    //var studentId = that.data.studentId;
+    var studentId = 20151621029;
     if (!studentId) {
       wx.showModal({
         title: '提示',
@@ -628,6 +646,10 @@ Page({
         },
       })
     }
-  }
+  },
+
+  onLoad: function () {
+    template.tabbar("tabBar", 2, this)//0表示第一个tabbar
+  },
 
 })
