@@ -1,0 +1,212 @@
+/* miniprogram/pages/map/map.wxss */
+/* pages/map/map.wxss */
+.map_container {
+  height: 100vh;
+  width: 100%;
+  border-top: 5%;
+}
+ 
+.map {
+  height: 100%;
+  width: 100%;
+}
+
+
+.list-guide{
+  display: flex;  
+  flex-direction: row; 
+  justify-content:space-around;
+  border-top: 1px solid #ededed;
+  height: 80rpx;
+}
+.list-guide-imgae{
+  height: 70rpx;
+  width: 70rpx;
+  margin-right: 20px;
+  vertical-align: middle;
+}
+.list-guide-text{
+  vertical-align: middle;
+  line-height: 90rpx;
+  font-size: 35rpx;
+}
+
+.swiper-tab{  
+  width: 100%;  
+  border-top: 2rpx solid #eee;  
+  border-bottom: 2rpx solid #eee;  
+  text-align: center;  
+  line-height: 88rpx;
+  background: #fff;  
+  position: fixed;
+  top: 0;  
+  z-index: 999;
+}  
+.swiper-tab-list{  
+font-size:32rpx;  
+display: inline-block;  
+width: 25%;  
+color: #333; 
+/* font-weight: bold;  */
+}
+.on_taobao{
+position: relative; 
+color: #FF4B0A;
+} 
+.on_taobao::after{
+position: absolute; 
+left: 50%;
+bottom: 0;
+transform: translateX(-50%);
+-webkit-transform: translateX(-50%);
+width:120rpx;
+height:6rpx;
+content: '';
+background:linear-gradient(98deg,rgba(252,111,3,1),rgba(255,143,3,1),rgba(253,93,17,1));
+border-radius:3rpx;
+} 
+.on_jd{
+position: relative; 
+color: #D32835;
+} 
+.on_jd::after{
+position: absolute; 
+left: 50%;
+bottom: 0;
+transform: translateX(-50%);
+-webkit-transform: translateX(-50%);
+width:120rpx;
+height:6rpx;
+content: '';
+background:linear-gradient(265deg,rgba(238,82,94,1),rgba(211,40,53,1));
+border-radius:3rpx;
+} 
+.on_pdd{
+position: relative; 
+color: #E22E1F;
+}  
+.on_pdd::after{
+position: absolute; 
+left: 50%;
+bottom: 0;
+transform: translateX(-50%);
+-webkit-transform: translateX(-50%);
+width:120rpx;
+height:6rpx;
+content: '';
+background:linear-gradient(262deg,rgba(255,94,81,0.88),rgba(226,46,31,0.88));
+border-radius:3rpx;
+}  
+
+
+.swiper-box{ 
+display: block; 
+height: 100%; 
+width: 100%; 
+margin-top: 90rpx;
+overflow: hidden; 
+background-color: #F8F8F8;
+}  
+page{
+background-color: #F2F2F2;
+}
+.orderList{
+width: 710rpx;
+height: 313rpx;
+border-radius:16rpx;
+background-color: #fff; 
+margin:20rpx auto 0; 
+padding: 30rpx 24rpx 0 24rpx;
+box-sizing: border-box;
+}
+.shop,.proInfo,.orderNum{
+display: flex;
+justify-content: space-between;
+}
+.shop_name{
+font-size: 26rpx;
+color: #333;
+}
+.shop_name image{
+width: 32rpx;
+height: 32rpx;
+margin-right: 15rpx;
+position: relative;
+top: 8rpx;
+/* margin-top: 15rpx; */
+}
+.shop .state{
+font-size: 26rpx;
+}
+.shop .state_taobao{
+color: #FF4B0A;
+}
+.shop .state_pdd{
+color: #E22E1F;
+}
+.shop .state_jd{
+color: #D32835;
+}
+.proInfo{
+padding: 30rpx 0;
+box-sizing: border-box;
+}
+.proInfo_img{
+width:110rpx;
+height:110rpx;
+border-radius:10rpx;
+overflow: hidden;
+/* background-color: pink; */
+}
+.proInfo_right{
+width: 522rpx;
+padding-top: 12rpx;
+box-sizing: border-box;
+}
+.proInfo_text{
+display: flex;
+justify-content: space-between;
+justify-items: middle;
+}
+.proInfo_text_title{
+font-size: 28rpx;
+color: #000;
+line-height: 45rpx;
+white-space: nowrap;
+max-width: 480rpx;
+text-overflow: ellipsis;
+overflow: hidden;
+margin-bottom: 10rpx;
+}
+.proInfo_text_title .iconfont{
+font-size: 30rpx;
+}
+.icon-qianjinjiantou{
+font-size: 25rpx;
+color: #000;
+font-weight: bold;
+}
+.proInfo_text_dtt{
+font-size: 24rpx;
+color: #999; 
+}
+.proInfo_text_acount{
+font-size: 26rpx;
+color: #999; 
+}
+.proInfo_text_acount text{
+font-size: 32rpx;
+color: #000; 
+}
+.orderNum{
+font-size: 24rpx;
+color: #333; 
+line-height: 82rpx;
+border-top: 2rpx solid #eee;
+white-space: nowrap;
+}
+.orderNum text{
+position: relative;
+font-size: 32rpx;
+color: #000; 
+}

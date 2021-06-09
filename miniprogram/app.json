@@ -13,15 +13,17 @@
     "pages/result/gan",
     "pages/result/list",
     "pages/result/commit",
-    
-
     "pages/shouye-user/shouye",
     "pages/shoppingCart-user/shoppingCart",
     "pages/my-user/my",
     "pages/post-user/post",
     "pages/order-user/order",
+<<<<<<< Updated upstream
 
     
+=======
+    "pages/select/test",
+>>>>>>> Stashed changes
     "pages/shouye/shouye",
     "pages/shoppingCart/shoppingCart",
     "pages/my/my",
@@ -58,7 +60,9 @@
     "pages/classify/jobDetail/jobDetail",
     "pages/thing-detail/thing-detail",
     "pages/search-thing-result/search-thing-result",
-    "pages/settlement/settlement"
+    "pages/settlement/settlement",
+    "pages/comment/comment",
+    "pages/map/map"
   ],
   "permission": {
     "scope.userLocation": {
@@ -86,7 +90,6 @@
         "iconPath": "images/tabBar/shoppingCart.png",
         "selectedIconPath": "images/tabBar/shoppingCart.fill.png"
       },
-
       {
         "text": "订单",
         "pagePath": "pages/order-user/order",
@@ -114,5 +117,4 @@
   "navigateToMiniProgramAppIdList": [
     "wx17128b374eab7c51"
   ]
- 
 }

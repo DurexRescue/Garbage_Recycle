@@ -177,6 +177,7 @@ App({
   globalData: {
     userInfo: null
   },
+  
   // 下拉刷新
 
   // 获取电影的数据URL

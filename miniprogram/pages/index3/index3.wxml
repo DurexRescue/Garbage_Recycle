@@ -1,0 +1,12 @@
+<view class='wrap'>
+   <view wx:for="{{typeArr}}" wx:key="{{index}}" wx:for-index="idx" wx:for-item="child" class='liWrap'>
+       <view class='li1' wx:for="{{child.stars}}"  wx:key="{{index}}">
+         <image class="star-image" style="left: {{item*82}}rpx;"
+         src="{{child.key > item ?(child.key - item == 0.5?child.halfSrc:child.selectedSrc) : child.normalSrc}}">
+           <view  class="item" style="left:0rpx;" data-index="{{idx}}" data-key="{{item+0.5}}" bindtap="selectLeft"></view>
+           <view  class="item" style="left:21rpx;" data-index="{{idx}}" data-key="{{item+1}}" bindtap="selectRight"></view>
+         </image>
+       </view>
+       <view class='liText1'>{{child.typename}}</view>
+   </view>
+ </view>

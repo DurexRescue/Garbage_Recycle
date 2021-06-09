@@ -1,0 +1,47 @@
+<!--pages/map/map.wxml-->
+ 
+<view class="orderList" wx:for="{{orderList}}" wx:if="{{item===orderList[0]}}" wx:key="index" data-item="{{item}}" bindtap='toDetail'>
+        <!-- <view class="shop">
+          <view class="shop_name">
+            <image src='{{item.shopurl}}' mode='widthFix' lazy-load='true'></image>
+            {{item.shop}}
+          </view>
+          <text class="state {{item.origin=='TaoBao' ? 'state_taobao' : item.origin=='PinDuoDuo' ? 'state_pdd' : item.origin=='JDCOM' ? 'state_jd' : ''}}">{{item.orderstate}}</text>
+        </view> -->
+        <view class="proInfo">
+          <image class="proInfo_img" src='{{item.pictureurl==""?defaultImg:item.pictureurl}}' mode='widthFix' lazy-load='true' binderror="errorFn" data-errorimg="{{index}}"></image>
+          <view class="proInfo_right">
+            <view class="proInfo_text">
+              <view class="proInfo_text_title">
+                <text wx:if="{{item.origin==='TaoBao'}}" class="iconfont icon-tianmaot"></text>
+                <text wx:elif="{{item.origin==='PinDuoDuo'}}" class="iconfont icon-pin"></text>
+                <text wx:elif="{{item.origin==='JDCOM'}}" class="iconfont icon-JD"></text>
+                {{item.couponname}}
+              </view>
+              <text class="iconfont icon-qianjinjiantou"></text>
+            </view>
+            <view class="proInfo_text">
+              <view class="proInfo_text_dtt">{{item.orderdtt}}</view> 
+              <text class="proInfo_text_acount">×{{item.productcount}}</text>
+            </view>
+          </view>
+        </view>
+        <view class="orderNum">
+          <view>订单号:{{item.ordernum}}({{item.type}})</view>
+          <view>实付:<text>￥{{item.payamount}}</text></view>
+          <view>
+            <button class="comment_btn" type="warn" size="mini" bindtap="navTocomment">评价</button>
+          </view>
+        </view>
+        
+      </view>
+      
+
+<!-- 这是地图部分 -->
+<view class="map_container">
+  <map class='map' longitude='{{longitude}}' latitude='{{latitude}}' scale='{{scale}}' markers='{{markers}}' controls="{{controls}}" bindcontroltap="bindcontroltap" polyline='{{polyline}}' circles="{{circles}}" bindmarkertap='bindmarkertap' bindcontroltap='bindcontroltap'
+    show-location="true"></map>
+</view>
+ 
+ 
+
