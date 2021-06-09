@@ -1,238 +1,92 @@
-// pages/movie-more/movie-more.js
-var app = getApp();
-
-var template = require('../template1/template1.js');
-
-
 Page({
-  onLoad: function () {
-    template.tabbar("tabBar", 2, this)//0表示第一个tabbar
-  },
-  /**
-   * 页面的初始数据
-   */
   data: {
-    //定义两个变量，
-    showInThearter: true,
-    showComingSoon: false,
-    //下面两个对象用来存放加载到的数据offset和total
-    //让这两个对象和typeId同名，方便使用
-    inThearters: {},
-    comingSoon: {},
-    lastbookId: '',
-    lastthingId: '',
-    bookLength: 5,
-    thingLength: 5,
-    isBookShow: false,
-    isThingShow: false,
+    nodataType: 7,
+    orderList: [],    //订单列表数据，接口获取
+    currentPage: 1,
+    isNoMoreData: false,
+    orderState: null,
+    winHeight: 900,
+    currentTab: 0,     //当前显示tab的下标
+    navTab: ['全部', '待付款', '已付款', '退款'],
+    loading: true,
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function(options) {
-
-    var typeId = options.typeId;
-    if (typeId === 'inThearters') {
-      this.setData({
-        showInThearter: false,
-        showComingSoon: true
-      })
-    } else {
-      this.setData({
-        showInThearter: true,
-        showComingSoon: false
-      });
-    }
-    this.getMovieListData('inThearters'); //根据唯一标示获取对应的数据
+  onLoad: function (options) {
+    this.initData(1);    //获取数据的方法
   },
+  initData(currentPage) {
 
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function() {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function() {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function() {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function() {
-
-  },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function() {
-    var isShow = this.data.isShow;
+    //写你自己的接口
     this.setData({
-      isShow: false
+      orderList: [{ shop: "某某名称", shopurl: "/images/1.jpg", origin: "TaoBao", orderstate: "已付款", pictureurl: "/images/1.jpg", couponname: "童装上衣童装上衣", orderdtt: "2020-04-05", productcount: 2, ordernum: "202054654654466", type: "购买", payamount: 100 }, { shop: "某某名称", shopurl: "/images/1.jpg", origin: "TaoBao", orderstate: "已付款", pictureurl: "/images/1.jpg", couponname: "童装上衣童装上衣", orderdtt: "2020-04-05", productcount: 2, ordernum: "202054654654466", type: "购买", payamount: 100 }, { shop: "某某名称", shopurl: "/images/1.jpg", origin: "TaoBao", orderstate: "已付款", pictureurl: "/images/1.jpg", couponname: "童装上衣童装上衣", orderdtt: "2020-04-05", productcount: 2, ordernum: "202054654654466", type: "购买", payamount: 100 }, { shop: "某某名称", shopurl: "/images/1.jpg", origin: "TaoBao", orderstate: "已付款", pictureurl: "/images/1.jpg", couponname: "童装上衣童装上衣", orderdtt: "2020-04-05", productcount: 2, ordernum: "202054654654466", type: "购买", payamount: 100 }, { shop: "某某名称", shopurl: "/images/1.jpg", origin: "TaoBao", orderstate: "已付款", pictureurl: "/images/1.jpg", couponname: "童装上衣童装上衣", orderdtt: "2020-04-05", productcount: 2, ordernum: "202054654654466", type: "购买", payamount: 100 }, { shop: "某某名称", shopurl: "/images/1.jpg", origin: "TaoBao", orderstate: "已付款", pictureurl: "/images/1.jpg", couponname: "童装上衣童装上衣", orderdtt: "2020-04-05", productcount: 2, ordernum: "202054654654466", type: "购买", payamount: 100 }, { shop: "某某名称", shopurl: "/images/1.jpg", origin: "TaoBao", orderstate: "已付款", pictureurl: "/images/1.jpg", couponname: "童装上衣童装上衣", orderdtt: "2020-04-05", productcount: 2, ordernum: "202054654654466", type: "购买", payamount: 100 }, { shop: "某某名称", shopurl: "/images/1.jpg", origin: "TaoBao", orderstate: "已付款", pictureurl: "/images/1.jpg", couponname: "童装上衣童装上衣", orderdtt: "2020-04-05", productcount: 2, ordernum: "202054654654466", type: "购买", payamount: 100 }, { shop: "某某名称", shopurl: "/images/1.jpg", origin: "TaoBao", orderstate: "已付款", pictureurl: "/images/1.jpg", couponname: "童装上衣童装上衣", orderdtt: "2020-04-05", productcount: 2, ordernum: "202054654654466", type: "购买", payamount: 100 }, { shop: "某某名称", shopurl: "/images/1.jpg", origin: "TaoBao", orderstate: "已付款", pictureurl: "/images/1.jpg", couponname: "童装上衣童装上衣", orderdtt: "2020-04-05", productcount: 2, ordernum: "202054654654466", type: "购买", payamount: 100 }]
     })
-    console.log(11)
-    // 动态设置导航条标题
-    wx.setNavigationBarTitle({
-      title: '我的订单'
-    });
-    wx.showNavigationBarLoading(); //在标题栏中显示加载图标
-    setTimeout(function() {
-      wx.stopPullDownRefresh(); //停止加载
-      wx.hideNavigationBarLoading(); //隐藏加载icon
-    }, 2000)
+
+  },
+  switchNav(e) {  //点击 这个方法会触发bindChange()方法
+    let isSelect = e.target.dataset.current;
+    this.setData({
+      currentTab: isSelect,
+
+    })
+  },
+
+  bindChange(e) {    //切换swiper
+    let isSelect = e.detail.current;
+
+    if (isSelect != 0) {
+      this.setData({
+        orderState: isSelect
+      })
+    }
+    else {
+      this.setData({
+        orderState: null
+      })
+    }
+    this.setData({
+      isNoMoreData: false,
+      loading: true,
+      currentTab: isSelect,
+      orderList: []
+    })
+    this.initData(1)
+  },
+  toDetail(val) {
+    console.log(val.detail)
+    let obj = JSON.stringify(val.detail);
+    wx.navigateTo({
+      url: '../orderDetail/orderDetail?item=' + encodeURIComponent(obj)
+    })
   },
 
   /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function() {
-
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function() {
-
-  },
-  selectTap(event) {
-
-    var tabId = event.currentTarget.dataset.tabId;
-    console.log(tabId); //comingSoon inThearters
-    //注意此处的tabId是text标签中（正在上映、即将上映）中的data-tab-id的值
-    //这里最好还是要换一个标示，不然跟上面的标示重名，容易混淆
-    if (tabId === 'inThearters') {
-      this.setData({
-        showInThearter: true,
-        showComingSoon: false
-      });
-
-    } else {
-      this.setData({
-        showInThearter: false,
-        showComingSoon: true
-      });
-
-    }
-    //在两个值切换的时候，如果没有数据再进行加载
-    if (!this.data[tabId].messages) {
-      this.getMovieListData(tabId);
-    }
-  },
-  getMovieListData(typeId) {
-    var that = this;
-    //因为more页面只展示其中一个的数据，所以用一个URL来代替不同情况
-    var URL, mark;
-    // var lastbookId = that.data.lastbookId;
-    var bookLength = that.data.bookLength;
-    var thingLength = that.data.thingLength;
-    var isBookShow = that.data.isBookShow;
-    var isThingShow = that.data.isThingShow;
-    if (typeId === 'inThearters') {
-      URL = app.globalData.huanbaoBase + 'refreshbooks.php';
-      mark = 'lastbookId';
-    } else {
-      URL = app.globalData.huanbaoBase + 'refreshthings.php';
-      mark = 'lastthingId';
-    }
-    //当没有数据的时候，就不发送请求
-
-    if (bookLength < 5) {
-      that.setData({
-        isBookShow: true
-      })
-    }
-    if (thingLength < 5) {
-      that.setData({
-        isThingShow: true
-      })
-    }
-    if (thingLength < 5 && bookLength < 5) {
-      return
-    }
-
-    wx.showToast({
-      title: '加载中',
-      icon: 'loading',
-      duration: 5000
-    })
-    wx.request({
-      url: URL,
-      method: 'POST',
-      header: {
-        'content-type': 'application/x-www-form-urlencoded '
-      },
-      data: {
-        lastId: that.data[mark]
-      },
-      success: res => {
-        var messages = that.data[typeId].messages || [];
-        var data = res.data.data;
-
-        data.forEach(item => {
-          messages.push(item);
+ * 生命周期函数--监听页面初次渲染完成
+ */
+  onReady: function () {   //获取设备高度
+    let _this = this;
+    wx.getSystemInfo({
+      success: function (res) {
+        // console.log(res.windowWidth);
+        // console.log(res.windowHeight);
+        _this.setData({
+          winHeight: res.windowHeight
         })
-
-        if (mark == 'lastbookId') {
-          console.log(data.length); // 计算每组数据的长度。
-          that.setData({
-            bookLength: data.length //每次获取5组值
-          })
-          console.log(1);
-          console.log(res.data.data);
-          that.setData({
-            [typeId]: {
-              messages
-            },
-            lastbookId: data[data.length - 1].bookid //将这组数据中的最后一项的id赋值给lastbookId;
-          })
-        } else if (mark == 'lastthingId') {
-          console.log(2);
-          that.setData({
-            thingLength: data.length
-          })
-          console.log(res.data.data);
-          that.setData({
-            [typeId]: {
-              messages
-            },
-            lastthingId: res.data.data[data.length - 1].goodid
-          })
-        }
       },
-      fail: err => console.log(err),
-      complete() {
-        wx.hideToast();
-      }
     })
+
   },
-  //下拉加载数据
-  loadMore() {
-    let typeId = '';
-    if (this.data.showInThearter) {
-      typeId = 'inThearters'
-    } else {
-      typeId = 'comingSoon'
+  /**
+  * 页面上拉触底事件的处理函数
+  */
+  onReachBottom: function () {    //上拉加载分页
+    this.setData({
+      loading: true
+    })
+    if (!this.data.isNoMoreData && this.data.orderList.length > 0) {
+      this.initData(++this.data.currentPage);
     }
-
-    this.getMovieListData(typeId);
   },
-
-  onLoad: function () {
-    template.tabbar("tabBar", 2, this)//0表示第一个tabbar
-  },
-
 })
