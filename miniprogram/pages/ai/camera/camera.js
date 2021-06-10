@@ -12,8 +12,10 @@ Page({
     cWidth: 0,
     cHeight: 0,
     pic_Location: "",
+    from_home: false,
   },
-  onLoad() {
+  onLoad(options) {
+    this.data.from_home = options.from_home
     this.ctx = wx.createCameraContext()
     var time = wx.getStorageSync("time")
     var curTime = new Date().getTime()
@@ -201,26 +203,31 @@ Page({
     })
   },
   radioChange: function(e) {
+    var that = this
     console.log(e)
     console.log(e.detail)
     console.log(e.detail.value)
-    /*
-    wx.navigateTo({
-      //url: '/pages/result/list?keyword=' + e.detail.value,
-      url: '/pages/post/list?keyword=' + e.detail.value,
-    })
-    */
-    var pages = getCurrentPages();
-    var currPage = pages[pages.length - 1];   //当前页面
-    var prevPage = pages[pages.length - 2];  //上一个页面
- 
-    //直接调用上一个页面的setData()方法，把数据存到上一个页面中去
-    prevPage.setData({
-      //cityName: cityName
-      thingName: e.detail.value,
-      thingImage: this.data.pic_Location,
+    //console.log(options)
+  
+    if(that.data.from_home){
+      wx.navigateTo({
+        url: '/pages/result/list?keyword=' + e.detail.value,
+        //url: '/pages/post/list?keyword=' + e.detail.value,
+      })
+    }else{
+      var pages = getCurrentPages();
+      var currPage = pages[pages.length - 1];   //当前页面
+      var prevPage = pages[pages.length - 2];  //上一个页面
+  
+      //直接调用上一个页面的setData()方法，把数据存到上一个页面中去
+      prevPage.setData({
+        //cityName: cityName
+        thingName: e.detail.value,
+        thingImage: this.data.pic_Location,
     })
     wx.navigateBack();
+    }
+    
   },
   hideModal: function() {
     this.setData({

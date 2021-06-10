@@ -229,6 +229,20 @@ Page({
       thingImage: thingImage,
       thingName: thingName,
     })
+    wx.cloud.uploadFile({
+      cloudPath: "img_rec/" + new Date().getTime() +"-"+ Math.floor(Math.random() * 1000),
+      filePath: thingImage,
+      success : (uploadres) => { //上传图片到云储存成功
+        //console.log(uploadres)
+        wx.showLoading({ //显示加载提示框 不会自动关闭 只能wx.hideLoading关闭
+          title : "图片上传中", //提示框显示的提示信息
+          mask : true, //显示透明蒙层，防止触摸。为true提示的时候不可以对屏幕进行操作，不写或为false时可以操作屏幕
+          success : function () {
+              wx.hideLoading() //让提示框隐藏、消失
+          }
+        });
+      },
+    })
   },
   bindThingNameInput: function(e) { //商品名字
     this.setData({

@@ -384,7 +384,7 @@ goSearch: function() {
 },
 onBindCamera: function() {
   wx.navigateTo({
-    url: '../ai/camera/camera',
+    url: '../ai/camera/camera?from_home=' + true,
   })
 },
 onAikefu: function() {
