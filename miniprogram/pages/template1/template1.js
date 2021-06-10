@@ -34,8 +34,8 @@ function tabbarinit() {
     {
       "text": "查询",
       "pagePath": "../sort/sort",
-      "iconPath": "images/tabBar/shou.png",
-      "selectedIconPath": "images/tabBar/shou.png"
+      "iconPath": "../../images/tabBar/shou.png",
+      "selectedIconPath": "../../images/tabBar/shou.png"
     }
 
   ]

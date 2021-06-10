@@ -1,14 +1,7 @@
 //my.js
 var StudentId = './mySetting/mySetting.js'
 var app = getApp()
-
-var template = require('../template1/template1.js');
-
 Page({
-
-  onLoad: function () {
-    template.tabbar("tabBar", 3, this)//0表示第一个tabbar
-  },
 
   /**
    * 页面的初始数据
@@ -27,11 +20,30 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function () {
+    var that = this
+    var userInfo = app.globalData.userInfo;
+       console.log(userInfo)
+      that.setData({
+        nickName: userInfo.nickName
+      })
+      that.setData({
+        avatarUrl : userInfo.avatarUrl
+      })
+      try {//同步设置nickName
+        wx.setStorageSync('nickName', userInfo.nickName)
+      } catch (e) {
+      }
+      
+      wx.setStorage({
+        key: 'avatarUrl',
+        data: userInfo.avatarUrl,
+      })
+
     // 查看是否授权
     wx.getSetting({
       success: function (res) {
         if (res.authSetting['scope.userInfo']) {
-          wx.getUserInfo({
+          wx.getUserProfile({
             success: function (res) {
               
               //用户已经授权过
@@ -187,14 +199,19 @@ Page({
       title: '提示',
       content: '退出账号成功',
       success: function(){
-        wx.switchTab({
-          url: '/pages/shouye/shouye',
+        // wx.switchTab({
+        //   url: '/pages/shouye/shouye',
+        // })
+        wx.navigateTo({
+          url: '../select/test',
         })
       }
     })
   },
 
-  onLoad: function () {
-    template.tabbar("tabBar", 3, this)//0表示第一个tabbar
-  },
+
+
+
+  
+
 })

@@ -79,9 +79,15 @@ Page({
   },
 
   OnTap1:function(){
-    wx.redirectTo({
-      url: '../shouye/shouye',
-    })
+    if(this.data.isShowUserName){
+      wx.navigateTo({
+        url: '../shouye/shouye',
+      })
+    }else{
+      wx.showToast({
+        title: '请先登录！',
+      })
+    }
     },
 }
 

@@ -1,5 +1,8 @@
-<navigator class="top" url="mySetting/mySetting">
 
+<import src="../template1/template1.wxml"/>
+<template is="tabBar" data="{{tabBar:bindData.tabBar}}"/>
+
+<navigator class="top" url=" " >
   <button wx:if="{{canIUse}}" open-type="getUserInfo" bindgetuserinfo="bindGetUserInfo" class='btn-logn'>
     <image class="userinfo-avatar" src="{{userInfo.avatarUrl}}" background-size="cover"></image>
      <text class="userinfo-nickname" style='margin-left:-140rpx;'>{{userInfo.nickName}}</text>
@@ -8,8 +11,8 @@
   </button>
   <view wx:else>请升级微信版本</view>
 
- 
 </navigator>
+
 
 
 <view class="weui-cells weui-cells_after-title">
