@@ -482,27 +482,11 @@ Page({
   //发布物品的响应事件
   bindSubmitThing: function() {
     var that = this;
-    wx.cloud.uploadFile({
-      cloudPath: "img_rec/" + new Date().getTime() +"-"+ Math.floor(Math.random() * 1000),
-      filePath: this.data.thingImage,
-      success : (uploadres) => { //上传图片到云储存成功
-        console.log(uploadres)
-        wx.showLoading({ //显示加载提示框 不会自动关闭 只能wx.hideLoading关闭
-          title : "图片上传中", //提示框显示的提示信息
-          mask : true, //显示透明蒙层，防止触摸。为true提示的时候不可以对屏幕进行操作，不写或为false时可以操作屏幕
-          success : function () {
-              wx.hideLoading() //让提示框隐藏、消失
-              that.setData({
-                cloud_path : uploadres.fileID,
-              })
-              //cloud_path = uploadres.fileID
-          }
-        });
-        fail : (err) => {
-          console.log(err)
-        }
-      },
+
+    this.setData({
+      buttonLoadingJob: true
     })
+
     //处理时间
     var date = new Date();
     console.log(date.getFullYear().toString() + '-' +
@@ -517,9 +501,37 @@ Page({
       date.getHours().toString() + '：' +
       date.getMinutes().toString(),
     })
-
-
     //
+    wx.cloud.uploadFile({
+      cloudPath: "img_rec/" + new Date().getTime() +"-"+ Math.floor(Math.random() * 1000) + ".jpg",
+      filePath: this.data.thingImage,
+      success : (uploadres) => { //上传图片到云储存成功
+        console.log(uploadres)
+        that.setData({
+          cloud_path : uploadres.fileID,
+        })
+        wx.showToast({
+          title: '图片上传成功！',
+        })
+        //suc = true;
+        this.uploadDB();
+        this.setData({
+          buttonLoadingJob: false
+        })
+      },
+      fail : (err) => {
+        wx.showToast({
+          title: '图片上传失败！',
+        })
+        console.log(err)
+        this.setData({
+          buttonLoadingJob: false
+        })
+      }
+    })
+  },
+
+  uploadDB: function()  {
     db.collection('order_user').add({
       data:{
         thingImage: this.data.cloud_path,
@@ -545,7 +557,6 @@ Page({
         })
       }
     })
-    
   },
 
 
