@@ -231,7 +231,7 @@ Page({
   },
   // 去购物车
   toCart(){
-    wx.switchTab({
+    wx.navigateTo({
       url: '../cart/cart'
     })
   },
