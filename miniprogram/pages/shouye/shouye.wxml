@@ -1,55 +1,91 @@
-<!--pages/shouye/shouye.wxml-->
+<!--index.wxml-->
+
 <import src="../template1/template1.wxml"/>
 <template is="tabBar" data="{{tabBar:bindData.tabBar}}"/>
 
+<view class='serach'>
+<view class="searchB" bindtap='enterSearch'>
+<!-- <input type="text" placeholder="搜索商品" placeholder-class="input-text"/>  -->
+<image src='../../assets/icons/search.png'></image>
+<text class='txtColor'>搜索</text>
+</view>
+</view>
 
-<import src="../components/news/news.wxml"></import>
-<import src="../components/weatherLocationTrand/weatherLocationTrand.wxml"></import>
-<import src="../components/recommend/recommend.wxml"></import>
-
-<!-- 最顶端的位置天气时间 -->
-<!-- 1.位置 
-<template is="search" data="{{search}}"></template>
--->
-<!-- 2.天气 
-<navigator url='../weather/weather'>
-  <view class='weather'>
-    <text>| </text>
-    <image src='{{weatherUrl}}' style='width:40rpx;height:40rpx;margin-top:8rpx;'></image>
-    <text> {{weather_data[0].date}}</text>
-  </view>
-</navigator>
--->
-
-
-<!-- 首页的轮播图 -->
-<swiper indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}">
-  <block wx:for="{{imgUrls}}" wx:key="{{imgUrls}}">
-    <swiper-item>
-
+<view class='myCont'>
+<swiper indicator-dots="{{indicatorDots}}"
+  autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}" indicator-active-color="{{indicatoractivecolor}}">
+  <block wx:for="{{imgUrls}}" wx:key='{{index}}'>
+    <swiper-item >
       <image src="{{item}}" class="slide-image" />
     </swiper-item>
   </block>
 </swiper>
-<!-- 搜索框 -->
-<view class='sousuo' bindtap='bindSearchBook'  style="width: 750rpx; height: 108rpx; display: block; box-sizing: border-box; left: NaNrpx; top: NaNrpx">
-  
+
+<view class='hotList'>
+<view bindtap='allClass'><image  src='../../assets/imgs/home_hotbar_ic_list.png'></image> <text>全部分类</text> </view>
+<view bindtap='hotGoods'><image  src='../../assets/imgs/home_hotbar_ic_hot.png'></image> <text>热卖商品</text></view>
+<view bindtap='myOrder'><image  src='../../assets/imgs/home_hotbar_ic_form.png'></image> <text>我的订单</text></view>
+<view bindtap='mgFavor'><image  src='../../assets/imgs/home_hotbar_ic_favor.png'></image> <text>我的收藏</text></view>
 </view>
-<!-- 通知栏的模板 -->
-<view class='templateNews'>
-  <template is="theNews" data="{{msgList}}"></template>
+
+<view class='shopSection'>
+
+<view class='shopTitle'>
+<image  src='../../assets/icons/home_list_ic_hot.png'></image> <text>热卖商品</text>
+</view>
+
+<view class='shopList'>
+
+  <view class='listItem' bindtap='togoodsDetail'>
+    <image src='../../assets/imgs/listImg.png'></image>
+    <view class='itemBottom'>
+      <text class='title'>Apple/苹果iPhone 11 ProMAX官网旗舰店256G全网通国行正品iPhone11手机</text>
+      <view class='price'>
+        <view>
+          <text>¥29</text>
+          <text>¥39</text>
+        </view>
+        <button>购买</button>
+        
+      </view>
+    </view>
+  </view>
+
+ <view class='listItem' bindtap='togoodsDetail'>
+    <image src='../../assets/imgs/listImg2.png'></image>
+    <view class='itemBottom'>
+      <text class='title'>Apple/苹果iPhone 11 ProMAX官网旗舰店256G全网通国行正品iPhone11手机</text>
+      <view class='price'>
+        <view>
+          <text>¥29</text>
+          <text>¥39</text>
+        </view>
+        <button>购买</button>
+        
+      </view>
+    </view>
+  </view>
+
+  <view class='listItem' bindtap='togoodsDetail'>
+    <image src='../../assets/imgs/listImg.png'></image>
+    <view class='itemBottom'>
+      <text class='title'>Apple/苹果iPhone 11 ProMAX官网旗舰店256G全网通国行正品iPhone11手机</text>
+      <view class='price'>
+        <view>
+          <text>¥29</text>
+          <text>¥39</text>
+        </view>
+        <button>购买</button>
+        
+      </view>
+    </view>
+  </view>
+
+
+</view>
+<view class='bottomLine'> <text>我们也是有底线的</text></view>
+
 </view>
 
 
-
-<!-- 今日推荐 -->
-
-<!-- 推荐好书 -->
-<!-- 注释内容 结束 
-<view class='tuijian-img'>
-  <text class='tuijian-cont'>今日推荐</text>
-  <image src='../../images/tuijian.png'></image>
 </view>
- 
- <template is="recommend" class="tuijian-temp" data="{{inThearters,comingSoon}}"/>
- -->
