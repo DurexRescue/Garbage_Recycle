@@ -97,6 +97,7 @@ Page({
           that.setData({
             pic_Location: res.tempFilePath
           })
+
           wx.getFileSystemManager().readFile({
             filePath: res.tempFilePath,
             encoding: "base64",

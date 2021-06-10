@@ -4,6 +4,10 @@ Bmob.initialize("a59374d37a4a78b74dd041115158fcb2", "ab6eeae50480842b42ce0d71fde
 
 App({
   onLaunch: function() {
+    // var date = new Date();
+    // console.log(date)
+
+    
     var user = new Bmob.User();//开始注册用户
     var newOpenid = wx.getStorageSync('openid')
     // 展示本地存储能力
