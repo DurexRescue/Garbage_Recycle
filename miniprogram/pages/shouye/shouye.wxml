@@ -34,54 +34,19 @@
 <image  src='../../assets/icons/home_list_ic_hot.png'></image> <text>热卖商品</text>
 </view>
 
-<view class='shopList'>
-
-  <view class='listItem' bindtap='togoodsDetail'>
-    <image src='../../assets/imgs/listImg.png'></image>
+<view class='shopList' >
+  <view class='listItem' bindtap='togoodsDetail' wx:for="{{orderList.data}}">
+    <image src="{{item.thingImage}}"></image>
     <view class='itemBottom'>
-      <text class='title'>Apple/苹果iPhone 11 ProMAX官网旗舰店256G全网通国行正品iPhone11手机</text>
+      <text class='title'>{{item.thingName}} / {{item.thingDescribe}}</text>
       <view class='price'>
         <view>
-          <text>¥29</text>
-          <text>¥39</text>
+          <text>¥{{item.thingPrice}}</text>
         </view>
         <button>购买</button>
-        
       </view>
     </view>
   </view>
-
- <view class='listItem' bindtap='togoodsDetail'>
-    <image src='../../assets/imgs/listImg2.png'></image>
-    <view class='itemBottom'>
-      <text class='title'>Apple/苹果iPhone 11 ProMAX官网旗舰店256G全网通国行正品iPhone11手机</text>
-      <view class='price'>
-        <view>
-          <text>¥29</text>
-          <text>¥39</text>
-        </view>
-        <button>购买</button>
-        
-      </view>
-    </view>
-  </view>
-
-  <view class='listItem' bindtap='togoodsDetail'>
-    <image src='../../assets/imgs/listImg.png'></image>
-    <view class='itemBottom'>
-      <text class='title'>Apple/苹果iPhone 11 ProMAX官网旗舰店256G全网通国行正品iPhone11手机</text>
-      <view class='price'>
-        <view>
-          <text>¥29</text>
-          <text>¥39</text>
-        </view>
-        <button>购买</button>
-        
-      </view>
-    </view>
-  </view>
-
-
 </view>
 <view class='bottomLine'> <text>我们也是有底线的</text></view>
 
