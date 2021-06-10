@@ -1,6 +1,3 @@
-<import src="../template1/template1.wxml"/>
-<template is="tabBar" data="{{tabBar:bindData.tabBar}}"/>
-
 <view class='top-view'>
   <text>保护环境，人人有责</text>
 </view>

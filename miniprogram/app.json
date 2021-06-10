@@ -1,7 +1,7 @@
 {
   "entryPagePath":      "pages/select/test",
   "pages": [
-
+    "pages/sort-user/sort",
 
     "pages/ai/index",
     "pages/ai/camera/camera",
@@ -100,7 +100,7 @@
 
       {
         "text": "查询",
-        "pagePath": "pages/sort/sort",
+        "pagePath": "pages/sort-user/sort",
         "iconPath": "images/tabBar/shou.png",
         "selectedIconPath": "images/tabBar/shou.png"
       }

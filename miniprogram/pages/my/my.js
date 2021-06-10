@@ -1,8 +1,15 @@
 //my.js
 var StudentId = './mySetting/mySetting.js'
 var app = getApp()
+
+
+var template = require('../template1/template1.js');
 Page({
 
+  onLoad: function () {
+    template.tabbar("tabBar", 3, this)//0表示第一个tabbar
+   // this.getData();
+  },
   /**
    * 页面的初始数据
    */
@@ -211,7 +218,10 @@ Page({
 
 
 
+  onLoad: function () {
+    template.tabbar("tabBar", 3, this)//0表示第一个tabbar
+   // this.getData();
+  },
 
-  
 
 })

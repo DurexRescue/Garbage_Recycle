@@ -1,16 +1,5 @@
 const app = getApp();
-
-var template = require('../template1/template1.js');
-
-
 Page({
-
-
-  onLoad: function () {
-    template.tabbar("tabBar", 0, this)//0表示第一个tabbar
-    this.getData();
-  },
-
   data: {
     ColorList: [
       "../../images/RecycleableWaste.jpg",
@@ -47,12 +36,5 @@ Page({
     wx.navigateTo({
       url: '/pages/ai/filter/filter?type=' + indexClick,
     })
-  },
-
-
-  onLoad: function () {
-    template.tabbar("tabBar", 0, this)//0表示第一个tabbar
-   // this.getData();
-  },
-
+  }
 })
