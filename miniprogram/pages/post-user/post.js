@@ -55,6 +55,7 @@ Page({
     buttonLoadingThing: false,
     cloud_path: '',
     orderTime: '',
+    status: ["待服务", "待结款", "已完成"],
     
 
     //兼职信息数据
@@ -532,7 +533,9 @@ Page({
         thingAddress: this.data.thingAddress,
         thingDescribe: this.data.thingDescribe,
         nickName: app.globalData.userInfo.nickName,
-        orderTime: this.data.orderTime
+        orderTime: this.data.orderTime,
+        status: this.data.status,
+        statusIndex: 0,
       },
       success: res => {
         console.log(res)
