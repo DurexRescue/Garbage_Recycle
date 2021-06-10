@@ -1,4 +1,4 @@
-
+const DB=wx.cloud.database().collection("order_user");
 var app = getApp()
 Page({
   data: {
@@ -10,15 +10,56 @@ Page({
     appointmentTime: '2020年3月30日  22:45',
     orderTime: '2020年3月30日  23:12',
     hasData: true,
-    navTab: ["全部", "未付款", "待接待", "已完成"],
+    navTab: ["全部", "待服务", "待结款", "已完成"],
     moneyInfo: [, , , , , , ,],
     nickName: 'iscode',
     phoneNum: '1888888888',
     url: '/images/1.jpg',
     statusImage: ['/images/1.jpg'],
-    currentNavtab: 1,
+    currentNavtab: 0,
     statusText: ['未付款'],
-    startPoint: [0, 0]
+    startPoint: [0, 0],
+    thingCampus: '',
+    thingAddress: '',
+    thingPrice: '',
+    thingConditions: '',
+    orderList: [],
+    avatarUrl: '',
+  },
+
+  getOpenId: function(e){
+    wx.cloud.callFunction({
+      name: 'getopenid',
+      success(res){
+        console.log("获取openid成功",res.result.openid);
+        return res.result.openid;
+      },
+      fail(res){
+        console.log("获取openid失败",res);
+        return null;
+      },
+    })
+  },
+
+  showOrderList: function(e){
+    var that=this;
+    DB.where({
+      _openid: this.getOpenId()
+    }).get({
+      success: function(res){
+        console.log(res);
+        if(res.data.length == 0){
+          console.log("数据库为空，无订单");
+        }
+        that.setData({
+          orderList: res
+        })
+        console.log("获取成功，订单列表为：",that.data.orderList);
+      },
+      fail(res){
+        console.log("获取失败",res);
+      }
+    })
   },
 
   catchtouchstart: function (e) {
@@ -80,12 +121,27 @@ Page({
 
   // 加载
   onLoad: function () {
+    console.log("asdasdasd");
     wx.setNavigationBarTitle({
       title: '订单列表'
     })
-    var that = this
+    var that = this         
     //更新数据
     that.setData({
+      avatarUrl: app.globalData.userInfo,
     })
-  }
+    this.showOrderList();
+  },
+  onShow: function () {
+    console.log("asdasdasd");
+    wx.setNavigationBarTitle({
+      title: '订单列表'
+    })
+    var that = this         
+    //更新数据
+    that.setData({
+      avatarUrl: app.globalData.userInfo,
+    })
+    this.showOrderList();
+  },
 })
