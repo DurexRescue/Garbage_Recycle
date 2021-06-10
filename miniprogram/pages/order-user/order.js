@@ -15,7 +15,7 @@ Page({
     nickName: 'iscode',
     phoneNum: '1888888888',
     url: '/images/1.jpg',
-    statusImage: ['/images/1.jpg'],
+    statusImage: ['/images/statusImage/待服务.png','/images/statusImage/待结款.png','/images/statusImage/已完成.png'],
     currentNavtab: 0,
     statusText: ['未付款'],
     startPoint: [0, 0],
