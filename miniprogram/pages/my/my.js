@@ -1,14 +1,13 @@
 //my.js
 var StudentId = './mySetting/mySetting.js'
 var app = getApp()
-
-
 var template = require('../template1/template1.js');
 Page({
 
+
   onLoad: function () {
     template.tabbar("tabBar", 3, this)//0表示第一个tabbar
-   // this.getData();
+    this.getData();
   },
   /**
    * 页面的初始数据
@@ -72,6 +71,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function() {
+    template.tabbar("tabBar", 3, this)//0表示第一个tabbar
     var that = this;
     var studentId = that.data.studentId;
     var nickName = 'userInfo.nickName';
@@ -122,6 +122,9 @@ Page({
 
   },
   onPullDownRefresh(){
+
+    
+
     wx.setNavigationBarTitle({
       title: '我的信息'
     });
@@ -178,6 +181,11 @@ Page({
     }
   },
   bindClear: function (e) {
+
+
+  //    this.getData();
+  
+
     var that = this;
     var nickName = 'userInfo.nickName';
     var avatarUrl = 'userInfo.avatarUrl';
@@ -218,10 +226,6 @@ Page({
 
 
 
-  onLoad: function () {
-    template.tabbar("tabBar", 3, this)//0表示第一个tabbar
-   // this.getData();
-  },
 
 
 })
