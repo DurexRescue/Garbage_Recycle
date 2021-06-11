@@ -2,7 +2,12 @@
 var recordStartX = 0;
 var currentOffsetX = 0;
 
+<<<<<<< Updated upstream
 var template = require('../template1/template1.js');
+=======
+var app = getApp()
+const db = wx.cloud.database()
+>>>>>>> Stashed changes
 
 Page({
 
@@ -21,11 +26,17 @@ Page({
     minusStatus: 'disabled',
     chooseNum:0,
     listItem:[
+<<<<<<< Updated upstream
       { id: '1', title: '攀升MaxBook P1 15.6英寸IPS轻薄便捷笔记本电脑商务办公学生四核手提上网超级本', img: '../../assets/imgs/listImg2.png', num: 2, price: 10, attr: '属性1;属性2', checked:false},
       { id: '2', title: 'Cuud女士包包斜挎小包女百搭鳄鱼纹牛皮链条包女单肩包 CXCA1624', img: '../../assets/imgs/listImg2.png', num: 3, price: 20, attr: '属性1;属性2', checked:false },
 
+=======
+      // { id: '1', title: 'Apple/苹果iPhone 11 ProMAX官网旗舰店256G全网通国行正品iPhone11手机', img: '../../assets/imgs/listImg2.png', num: 2, price: 10, attr: '属性1;属性2', checked:false},
+      // { id: '2', title: 'Apple/苹果iPhone 11 ProMAX官网旗舰店256G全网通国行正品iPhone11手机', img: '../../assets/imgs/listImg2.png', num: 3, price: 20, attr: '属性1;属性2', checked:false },
+      // { id: '3', title: 'Apple/苹果iPhone 11 ProMAX官网旗舰店256G全网通国行正品iPhone11手机', img: '../../assets/imgs/listImg2.png', num: 3, price: 20, attr: '属性1;属性2', checked: true }
+>>>>>>> Stashed changes
         ],
-    allPrice:0,
+    allPrice: 0,
     selectedAllStatus: false,
       },
 
@@ -37,11 +48,41 @@ Page({
 
   },
 
+  onShow: function (){
+    var that = this;
+    db.collection('cart_merchant').where({
+      userInfo:{
+        nickName: app.globalData.userInfo.nickName
+      }
+    }).get({
+      success: function(res){
+        console.log(res);
+        if(res.data.length == 0){
+          console.log("购物车为空")
+        }
+        that.setData({
+          listItem: res.data
+        })
+        that.calculateTotal();
+
+        
+
+        console.log("获取成功，购物车列表为：",that.data.listItem)
+        
+      },
+      fail(res){
+        console.log("获取失败",res);
+      },
+      
+    })
+    
+  },
+
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
-    this.calculateTotal();
+   // this.calculateTotal();
  
   },
    toConfirm() {
@@ -92,13 +133,15 @@ Page({
     var listItem = this.data.listItem;
     var chooseNum = 0;
     var allPrice = 0;
-    for (var i = 0; i < listItem.length; i++) {
-      var good = listItem[i];
-      if (good.checked) {
-        chooseNum += parseInt(good.num);
-        allPrice += good.num * good.price;
-      }
+    console.log(this.data.listItem.length)
+    for (var i = 0; i < 1; i++) {
+      console.log(listItem[i].cart.price)
+      var good = listItem[i].cart;
+      console.log(good.price)
+      //chooseNum += parseInt(good.num);
+      allPrice += parseInt(good.price);
     }
+    console.log(allPrice)
     allPrice = allPrice.toFixed(2);
     this.setData({
       'chooseNum': chooseNum,
@@ -228,6 +271,7 @@ Page({
     this.setData({
       listItem: listItem
     });
+<<<<<<< Updated upstream
   },
 
 
@@ -235,4 +279,7 @@ Page({
     template.tabbar("tabBar",1, this)//0表示第一个tabbar
     this.setData();
   },
+=======
+  }
+>>>>>>> Stashed changes
 })

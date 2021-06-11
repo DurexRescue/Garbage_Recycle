@@ -54,6 +54,15 @@ Page({
                     userInfo: res_.userInfo,
                   }
                 })
+
+                db.collection('cart_merchant').add({
+                  data:{
+                    signature: res_.signature,
+                    userInfo: res_.userInfo,
+                    cart: '',
+                  }
+                })
+
               }
             },
           })

@@ -11,14 +11,14 @@
   <block wx:for="{{listItem}}" wx:key="{{index}}">
     <view class='listItem'>
       <view class='detail'>
-        <image src='{{item.img}}'></image>
+        <image src='{{item.cart.img}}'></image>
         <view class='detail_r'>
           <view class='detail_rT'>
-            <text>{{item.title}}</text>
-            <text>{{item.attr}}</text>
+            <text>{{item.cart.title}}</text>
+            <text>{{item.cart.attr}}</text>
           </view>
           <view class='detail_rB'>
-            <text>¥{{item.price}}</text>
+            <text>¥{{item.cart.price}}</text>
             <view class="stepper">
               数量：1
             </view>
@@ -41,7 +41,7 @@
   </view>
   <view class='b-B allMoney'>
     <label>总计金额</label>
-    <text>¥48.00</text>
+    <text>{{allPrice}}</text>
   </view>
   <view class='b-B leaveMsg'>
     <label>买家留言</label>
@@ -51,7 +51,7 @@
 
 <view class='bottomCont'>
     <view class='bottomContL'>
-     需付:¥48.00
+     需付:¥{{allPrice}}
     </view>
     <view class='bottomContR' bindtap='toPay'>立即支付</view>
   </view>

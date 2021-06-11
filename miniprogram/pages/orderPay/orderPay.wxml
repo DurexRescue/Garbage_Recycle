@@ -6,7 +6,7 @@
   </view>
   <view class='listItem'>
     <label>订单金额</label>
-    <text class='cred'>48¥</text>
+    <text class='cred'>¥{{allPrice}}</text>
   </view>
 </view>
 
