@@ -7,17 +7,20 @@ Page({
   data: {
     imgSrc: "",//请求图片的ip地址(需要拼接id)
     class: [
-      {id:'1',title:'推荐专区'},
-      { id: '2', title: '华为专区' },
-      { id: '3', title: '小米专区' },
-      { id: '4', title: '苹果专区' },
-      { id: '5', title: '新品区' }
+      {id:'1',title:'全部'},
+      { id: '2', title: '可回收物' },
+      { id: '3', title: '有害垃圾' },
+      { id: '4', title: '温垃圾' },
+      { id: '5', title: '干垃圾' }
     ],//一级列表
     classIndex: 0,//一级分类
     classType: [
-      { id: '1',img:'../../assets/imgs/twoListC1.png', title: '二级类目名' },
-      { id: '2', img: '../../assets/imgs/twoListC2.png', title: '二级类目名' },
-      { id: '3', img: '../../assets/imgs/twoListC3.png', title: '二级类目名' }
+
+
+      { id: '1', img: '../../images/RecycleableWaste.jpg', title: '一级类目名' },
+      { id: '2', img: '../../images/HazardouAwaste.jpg', title: '二级类目名' },
+      { id: '3', img: '../../images/HouseholdfoodWaste.jpg', title: '三级类目名' }
+
     ],//二级分类
     classTitle: "精选分类",//分类title
     typeId: ""

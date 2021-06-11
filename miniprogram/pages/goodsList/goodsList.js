@@ -10,13 +10,13 @@ Page({
     goodsList:[
       {
         img: '../../assets/imgs/listImg.png',
-        title: 'Apple/苹果iPhone 11 ProMAX官网旗舰店256G全网通国行正品iPhone11手机',
-        price:'29.00'
+        title: '攀升MaxBook P1 15.6英寸IPS轻薄便捷笔记本电脑商务办公学生四核手提上网超级本',
+        price:'1009.00'
       },
       {
-        img: '../../assets/imgs/listImg.png',
-        title: 'Apple/苹果iPhone 11 ProMAX官网旗舰店256G全网通国行正品iPhone11手机',
-        price: '29.00'
+        img: '../../assets/imgs/listImg2.png',
+        title: 'Cuud女士包包斜挎小包女百搭鳄鱼纹牛皮链条包女单肩包 CXCA1624',
+        price: '259.00'
       }
     ],
     comp:true,

@@ -14,9 +14,10 @@ Page({
 
   data: {
     imgUrls: [
-      '../../assets/imgs/banner.png',
-      '../../assets/imgs/banner.png',
-      '../../assets/imgs/banner.png'
+      '../../images/shouye/2.jpg',
+      '../../images/shouye/3.jpg',
+      '../../images/shouye/4.jpg',
+      '../../images/shouye/5.jpg'
     ],
     indicatorDots: true,
     vertical: false,
@@ -73,7 +74,7 @@ Page({
     })
   },
   allClass(){
-    wx.switchTab({
+    wx.navigateTo({
       url: '../classify1/classify'
     })
   },

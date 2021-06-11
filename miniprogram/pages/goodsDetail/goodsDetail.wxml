@@ -15,7 +15,7 @@
     <view class='num'>销量：20件</view>
   </view>
   <view class='detailsMid'>
-    <view>Apple/苹果iPhone 11 ProMAX官网旗舰店256G全网通国行正品iPhone11手机
+    <view>攀升MaxBook P1 15.6英寸IPS轻薄便捷笔记本电脑商务办公学生四核手提上网超级本
     </view>
     <view class='share' bindtap='showPopup'>
       <image src='../../assets/icons/details_title_ic_share.png'></image> 分享</view>
@@ -144,7 +144,7 @@
       <text>￥29.00 </text>
       <text> ￥32</text>
     </view>
-    <view class='title'>Apple/苹果iPhone 11 ProMAX官网旗舰店256G全网通国行正品iPhone11手机
+    <view class='title'>攀升MaxBook P1 15.6英寸IPS轻薄便捷笔记本电脑商务办公学生四核手提上网超级本
     </view>
     <view class='desc'>副标题描述</view>
     <view class='miniPro'>

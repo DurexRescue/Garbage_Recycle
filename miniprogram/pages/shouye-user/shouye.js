@@ -20,7 +20,7 @@ Page({
   data: {
     // 首页的轮播图
     imgUrls: [
-      "/images/shouye/1.jpg",
+      "/images/shouye/5.jpg",
       "/images/shouye/2.jpg",
       "/images/shouye/3.jpg",
       "/images/shouye/4.jpg",

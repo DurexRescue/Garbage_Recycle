@@ -12,7 +12,7 @@ function tabbarinit() {
 
    {
       "text": "购物车",
-      "pagePath": "../../pages/shoppingCart/shoppingCart",
+      "pagePath": "../../pages/cart/cart",
       "iconPath": "../../images/tabBar/shoppingCart.png",
       "selectedIconPath": "../../images/tabBar/shoppingCart.fill.png"
     },

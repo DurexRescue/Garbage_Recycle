@@ -7,9 +7,9 @@ Page({
    */
   data: {
     imgUrls: [
-      '../../assets/imgs/swiperImg.png',
-      '../../assets/imgs/swiperImg.png',
-      '../../assets/imgs/swiperImg.png'
+      '../../assets/imgs/listImg.png',
+      '../../assets/imgs/listImg2.png',
+
     ],
     indicatorDots: true,
     vertical: false,
