@@ -25,14 +25,18 @@ Page({
     thingConditions: '',
     orderList: [],
     avatarUrl: '',
+    user_open_id: '',
   },
 
   getOpenId: function(e){
+    var that=this;
     wx.cloud.callFunction({
       name: 'getopenid',
       success(res){
         console.log("获取openid成功",res.result.openid);
-        return res.result.openid;
+        that.setData({
+          user_open_id: res.result.openid,
+        })
       },
       fail(res){
         console.log("获取openid失败",res);
@@ -43,8 +47,10 @@ Page({
 
   showOrderList: function(e){
     var that=this;
+    that.getOpenId();
+    console.log(this.data.user_open_id);
     DB.where({
-      _openid: this.getOpenId()
+      _openid: this.data.user_open_id,
     }).get({
       success: function(res){
         console.log(res);
