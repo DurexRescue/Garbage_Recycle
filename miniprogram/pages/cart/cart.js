@@ -265,8 +265,8 @@ Page({
   },
 
 
-  onLoad: function () {
-    template.tabbar("tabBar",1, this)//0表示第一个tabbar
-    this.setData();
-  },
+  // onLoad: function () {
+  //   template.tabbar("tabBar",1, this)//0表示第一个tabbar
+  //   this.setData();
+  // },
 })

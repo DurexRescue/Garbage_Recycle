@@ -1,8 +1,8 @@
 <!--pages/cart/cart.wxml-->
 
 
-<import src="../template1/template1.wxml"/>
-<template is="tabBar" data="{{tabBar:bindData.tabBar}}"/>
+<!-- <import src="../template1/template1.wxml"/> -->
+<!-- <template is="tabBar" data="{{tabBar:bindData.tabBar}}"/> -->
 
 <view class='cart'>
 
